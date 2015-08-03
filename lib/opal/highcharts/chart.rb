@@ -21,10 +21,13 @@ module Highcharts
     # @!method set_title(title, subtitle)
     alias_native :set_title, :setTitle
 
-    # @!method options
+    # @!method config
+    # substitute for Highchart Chart.options
+    # as options returned here is not same as options initially set
+    # and thus confusing
     # @return [hash]
-    def options
-      Options.new(`#{self.to_n}.options`)
+    def config
+      Config.new(`#{self.to_n}.options`)
     end
 
     def series
