@@ -1,6 +1,6 @@
 module Highcharts
   # Returned by Chart#options
-  class Config
+  class Options
     include Base
     alias_native :colors
     alias_native :symbols
