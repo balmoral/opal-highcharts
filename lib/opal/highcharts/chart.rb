@@ -33,7 +33,7 @@ module Highcharts
       log "#{self.class.name}##{__method__} : native options = '#{o}'"
       o = Options.new(o)
       log "#{self.class.name}##{__method__} : local options = '#{o}'"
-      log "#{self.class.name}##{__method__} : local options = '#{o.to_h}'"
+      log "#{self.class.name}##{__method__} : local options = '#{o.inspect}'"
     end
 
     # @!method series
