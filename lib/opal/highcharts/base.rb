@@ -1,4 +1,7 @@
 module Highcharts
+
+  class UnsupportedFeature < RuntimeError; end
+
   module Base
     include Native
 
