@@ -4,11 +4,11 @@ module Highcharts
 
     def initialize(arg_options)
       log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{arg_options}"
-      options = arg_options.to_h.dup
-      log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
-      contain(options)
-      log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
-      case options.delete(:mode)
+      options_h = arg_options.to_h.dup
+      log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options_h}"
+      contain(options_h)
+      log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options_h}"
+      case options_h.delete(:mode)
         when :stock
           super(`new Highcharts.Chart('StockChart', #{ options.to_n } )`)
         when :map
@@ -40,7 +40,7 @@ module Highcharts
     private
 
 
-    def contain(options)
+    def contain(options_h)
       # Get the id of the container or undefined
       id = `$('#container').prop("id")`
       log "#{self.class.name}##{__method__}:#{__LINE__} : initial container id is '#{id}'"
@@ -48,7 +48,7 @@ module Highcharts
       # use the id in the chart options if present
       # otherwise set to a random id.
       unless `#{id} === undefined`
-        id = options[:id] || random_id
+        id = options_h[:id] || random_id
         log "#{self.class.name}##{__method__}:#{__LINE__} : char id is undefined - setting to '#{id}'"
         `$('#container').prop("id", id)`
       end
@@ -60,9 +60,9 @@ module Highcharts
       #
       # If :renderTo has not been set in the options then
       # it will be set here to the container id.
-      unless options[:chart] && options[:chart][:renderTo]
-        # Volt.logger.debug("#{self.class.name}##{__method__}:#{__LINE__} : setting chart_model._chart._renderTo = '#{id}'")
-        (options[:chart] ||= {})[:renderTo] = id
+      unless options_h[:chart] && options_h[:chart][:renderTo]
+        log "#{self.class.name}##{__method__}:#{__LINE__} : setting chart_model._chart._renderTo = '#{id}'"
+        (options_h[:chart] ||= {})[:renderTo] = id
       end
     end
 
