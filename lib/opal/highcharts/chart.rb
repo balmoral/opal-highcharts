@@ -4,7 +4,8 @@ module Highcharts
 
     def initialize(arg_options)
       log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{arg_options}"
-      options = arg_options.to_h
+      options = arg_options.to_h.dup
+      log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
       contain(options)
       log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
       case options.delete(:mode)
