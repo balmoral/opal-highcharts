@@ -50,7 +50,7 @@ module Highcharts
       if `#{id} === undefined`
         id = options[:id] || random_id
         log "#{self.class.name}##{__method__}:#{__LINE__} : container id is undefined - setting to '#{id}'"
-        `$('#container').prop("id", #id)`
+        `$('#container').prop("id", #{id})`
         cid = `$('#container').prop("id")`
         log "#{self.class.name}##{__method__}:#{__LINE__} : container id is now => '#{cid}'"
       end
