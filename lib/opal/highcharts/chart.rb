@@ -49,7 +49,7 @@ module Highcharts
       # If the container id is undefined then
       # use the id in the chart options if present
       # otherwise set to a random id.
-      unless id == nil || id == 'undefined'
+      unless `#{id} === undefined`
         id = options[:id] || random_id
         %x{
           console.log(
