@@ -10,11 +10,11 @@ module Highcharts
       # log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
       case options.delete(:mode)
         when :stock
-          super(`$('#container').highcharts.Chart('StockChart', #{ options.to_n } )`)
+          super(`$('#container').highcharts('StockChart', #{ options.to_n } )`)
         when :map
-          super(`$('#container').highcharts.Chart('Map', #{ options.to_n } )`)
+          super(`$('#container').highcharts('Map', #{ options.to_n } )`)
         else
-          super(`$('#container').highcharts.Chart( #{ options.to_n } )`)
+          super(`$('#container').highcharts( #{ options.to_n } )`)
       end
     end
 
