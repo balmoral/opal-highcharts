@@ -14,7 +14,7 @@ module Highcharts
         when :map
           super(`$('#container').highcharts('Map', #{ options.to_n } )`)
         else
-          super(`$('#container').highcharts( #{ options.to_n } )`)
+          super(`new Highcharts.Chart( #{ options.to_n } )`)
       end
     end
 
