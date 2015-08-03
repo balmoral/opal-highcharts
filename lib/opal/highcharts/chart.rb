@@ -2,7 +2,7 @@ module Highcharts
   class Chart
     include Native
 
-    def initialize(arg_options)
+    def initialize(arg_options) #
       options = arg_options.to_h
       contain(options)
       case options.delete(:mode)
