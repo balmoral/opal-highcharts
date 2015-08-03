@@ -24,7 +24,10 @@ module Highcharts
     alias_native :redraw
 
     # @!method set_title(title, subtitle)
-    alias_native :set_title, :setTitle
+    # alias_native :set_title, :setTitle
+    def set_title(t)
+      `#{self.to_n}.setTitle(t)`
+    end
 
     # @!method options
     # @return [Options]
