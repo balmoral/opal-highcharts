@@ -30,7 +30,7 @@ module Highcharts
     # @return [Options]
     def options
       o = `#{self.to_n}.options`
-      log "#{self.class.name}##{__method__} : native options = '#{o}'"
+      log "#{self.class.name}##{__method__} : native options = '#{o.inspect}'"
       o = Options.new(o)
       log "#{self.class.name}##{__method__} : local options = '#{o}'"
       log "#{self.class.name}##{__method__} : local options = '#{o.inspect}'"
