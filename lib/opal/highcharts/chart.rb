@@ -35,7 +35,7 @@ module Highcharts
 
     def contain(options)
       # Get the id of the container or undefined
-      id = `$(#container).prop("id")`
+      id = `$(container).prop("id")`
       %x{
         console.log(
           #{
@@ -55,7 +55,7 @@ module Highcharts
             }
           )
         }
-        `$(#container).prop("id", id)`
+        `$(container).prop("id", id)`
       end
 
       # If :renderTo has been set in the options then it
