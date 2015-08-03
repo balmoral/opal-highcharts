@@ -3,6 +3,7 @@ module Highcharts
     include Base
 
     def initialize(arg_options)
+      log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{arg_options}"
       options = arg_options.to_h
       contain(options)
       log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
