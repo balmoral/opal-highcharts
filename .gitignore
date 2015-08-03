@@ -1,16 +1,22 @@
-## Documentation cache and generated files:
-/.yardoc/
-/_yardoc/
-/doc/
-/rdoc/
-
-## Ignore editors, tools and such:
-.idea
-
-## Ignore demo's Gemfile.lock
-*Gemfile.lock
-
-pkg
 build
 commit
 push
+.idea
+.gitignore
+*.gem
+*.rbc
+.bundle
+.config
+.yardoc
+Gemfile.lock
+InstalledFiles
+_yardoc
+coverage
+doc/
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
