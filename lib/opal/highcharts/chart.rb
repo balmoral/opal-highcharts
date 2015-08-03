@@ -6,15 +6,15 @@ module Highcharts
       log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{arg_options}"
       options = arg_options.to_h.dup
       log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
-      contain(options)
-      log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
+      # contain(options)
+      # log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
       case options.delete(:mode)
         when :stock
-          super(`new Highcharts.Chart('StockChart', #{ options.to_n } )`)
+          super(`$('#container').highcharts.Chart('StockChart', #{ options.to_n } )`)
         when :map
-          super(`new Highcharts.Chart('Map', #{ options.to_n } )`)
+          super(`$('#container').highcharts.Chart('Map', #{ options.to_n } )`)
         else
-          super(`new Highcharts.Chart( #{ options.to_n } )`)
+          super(`$('#container').highcharts.Chart( #{ options.to_n } )`)
       end
     end
 
