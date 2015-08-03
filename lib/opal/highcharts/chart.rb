@@ -29,7 +29,9 @@ module Highcharts
     # @!method options
     # @return [Options]
     def options
-      Options.new(`#{self.to_n}.options`)
+      o = `#{self.to_n}.options`
+      log "#{self.class.name}##{__method__} : native options = '#{o}'"
+      Options.new(o)
     end
 
     # @!method series
