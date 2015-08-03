@@ -16,6 +16,8 @@ module Highcharts
         else
           super(`new Highcharts.Chart( #{ options.to_n } )`)
       end
+      id = `$('#container').prop("id")`
+      log "#{self.class.name}##{__method__}:#{__LINE__} : container id is '#{id}'"
     end
 
     # @!method redraw(options)
