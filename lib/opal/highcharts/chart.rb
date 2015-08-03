@@ -11,9 +11,9 @@ module Highcharts
       # log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
       case mode = options.delete(:mode)
         when :stock
-          super(`new Highcharts.Chart('StockChart', #{ options.to_n } )`)
+          super(`new Highcharts.StockChart( #{ options.to_n } )`)
         when :map
-          super(`new Highcharts.Chart('Map', #{ options.to_n } )`)
+          super(`new Highcharts.StockMap( #{ options.to_n } )`)
         when :chart
           super(`new Highcharts.Chart( #{ options.to_n } )`)
         else
