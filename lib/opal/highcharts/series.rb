@@ -1,6 +1,6 @@
 module Highcharts
   class Series
-    include Native
+    include Base
 
     # @!method add_point(options, redraw=true, shift=false, animation=true)
     # @param options [Numeric|Array|Hash]

@@ -1,10 +1,11 @@
 module Highcharts
   class Chart
-    include Native
+    include Base
 
-    def initialize(arg_options) #
+    def initialize(arg_options)
       options = arg_options.to_h
       contain(options)
+      log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
       case options.delete(:mode)
         when :stock
           super(`new Highcharts.Chart('StockChart', #{ options.to_n } )`)
@@ -36,28 +37,17 @@ module Highcharts
 
     private
 
+
     def contain(options)
       # Get the id of the container or undefined
       id = `$('#container').prop("id")`
-      %x{
-        console.log(
-          #{
-            "#{self.class.name}##{__method__}:#{__LINE__} : initial container id is '#{id}'"
-          }
-        )
-      }
+      log "#{self.class.name}##{__method__}:#{__LINE__} : initial container id is '#{id}'"
       # If the container id is undefined then
       # use the id in the chart options if present
       # otherwise set to a random id.
       unless `#{id} === undefined`
         id = options[:id] || random_id
-        %x{
-          console.log(
-            #{
-              "#{self.class.name}##{__method__}:#{__LINE__} : char id is undefined - setting to '#{id}'"
-            }
-          )
-        }
+        log "#{self.class.name}##{__method__}:#{__LINE__} : char id is undefined - setting to '#{id}'"
         `$('#container').prop("id", id)`
       end
 

@@ -1,8 +1,7 @@
 module Highcharts
-
   # Returned by Chart#options
   class Config
-    include Native
+    include Base
     alias_native :colors
     alias_native :symbols
     alias_native :lang
