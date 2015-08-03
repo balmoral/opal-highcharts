@@ -7,15 +7,13 @@ module Highcharts
       log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{arg_options}"
       options = arg_options.to_h.dup
       log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
-      # contain(options)
-      # log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
       case mode = options.delete(:mode)
         when :chart
           super(`new Highcharts.Chart( #{ options.to_n } )`)
         when :stock
           super(`new Highcharts.StockChart( #{ options.to_n } )`)
         when :map
-          raise UnsupportedFeature, "Highcharts.Map' "
+          raise UnsupportedFeature, "chart mode : '#{mode}' (Highcharts.Map)"
           # super(`new Highcharts.Map( #{ options.to_n } )`)
         else
           raise ArgumentError, "invalid chart mode '#{mode}'"
