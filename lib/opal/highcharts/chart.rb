@@ -47,9 +47,9 @@ module Highcharts
       # If the container id is undefined then
       # use the id in the chart options if present
       # otherwise set to a random id.
-      unless `#{id} === undefined`
+      if `#{id} === undefined`
         id = options_h[:id] || random_id
-        log "#{self.class.name}##{__method__}:#{__LINE__} : char id is undefined - setting to '#{id}'"
+        log "#{self.class.name}##{__method__}:#{__LINE__} : chart id is undefined - setting to '#{id}'"
         `$('#container').prop("id", id)`
       end
 
