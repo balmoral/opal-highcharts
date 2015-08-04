@@ -27,14 +27,13 @@ module Highcharts
 
   module Base
     include Native
-    # extend MonkeyPatches
 
     def log(s)
       %x{ console.log( #{ s } ) }
     end
 
     def self.included(klass)
-      klass.extend self
+      klass.extend Native::Helpers
     end
 
   end
