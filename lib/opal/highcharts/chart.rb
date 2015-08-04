@@ -29,15 +29,16 @@ module Highcharts
 
     # @!method options
     # @return [Options]
-    def options
-      o = `#{self.to_n}.options`
-      o_n = Native(o)
-      log "#{self.class.name}##{__method__} : native options = '#{o_n}'"
-      log "#{self.class.name}##{__method__} : native options to_h = '#{o_n.to_h}'"
-      o = Options.new(o)
-      log "#{self.class.name}##{__method__} : local options = '#{o}'"
-      log "#{self.class.name}##{__method__} : local options = '#{o.inspect}'"
-    end
+    alias_native :options, as: Options
+    #def options
+    #  o = `#{self.to_n}.options`
+    #  o_n = Native(o)
+    #  log "#{self.class.name}##{__method__} : native options = '#{o_n}'"
+    #  log "#{self.class.name}##{__method__} : native options to_h = '#{o_n.to_h}'"
+    #  o = Options.new(o)
+    #  log "#{self.class.name}##{__method__} : local options = '#{o}'"
+    #  log "#{self.class.name}##{__method__} : local options = '#{o.inspect}'"
+    #end
 
     # @!method series
     # @return [array of Series]
