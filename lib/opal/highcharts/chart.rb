@@ -37,17 +37,17 @@ module Highcharts
     alias_native :get_svg, :getSVG
     alias_method :svg, :get_svg
     alias_native :redraw
-    # alias_native :set_title, :setTitle
+    alias_native :set_title, :setTitle
     alias_native :options, :options, as: Options
     alias_native :renderer, :renderer, as: Renderer # see http://api.highcharts.com/highcharts#Renderer
     alias_native :series, :series, array: Series
 
     # eg. title and subtitle should be either nil, string or { text: 'abc' } and any other title options
-    def set_title(_title = nil, _subtitle = nil, redraw = true)
-      title = _title.is_a?(String) ? { text: _title } : _title
-      subtitle = _subtitle.is_a?(String) ? { text: _subtitle } : _subtitle
-      `console.log(#{"#{self.class.name}##{__method__}(#{title}, #{subtitle}, #{redraw})"})`
-      `#{self.to_n}.setTitle(#{title.to_n}, #{subtitle.to_n}, #{redraw})`
-    end
+    # def set_title(_title = nil, _subtitle = nil, redraw = true)
+    #   title = _title.is_a?(String) ? { text: _title } : _title
+    #   subtitle = _subtitle.is_a?(String) ? { text: _subtitle } : _subtitle
+    #   `console.log(#{"#{self.class.name}##{__method__}(#{title}, #{subtitle}, #{redraw})"})`
+    #   `#{self.to_n}.setTitle(#{title.to_n}, #{subtitle.to_n}, #{redraw})`
+    # end
   end
 end
