@@ -2,11 +2,6 @@ module Highcharts
   class Series
     include Base
 
-    %x{
-       self._proto = window.Highcharts.Series.prototype, def = self._proto;
-               window.Highcharts.Series.prototype._klass = self;
-     }
-
     # @!method add_point(options, redraw=true, shift=false, animation=true)
     # @param options [Numeric|Array|Hash]
     #   options: Number|Array|Hash
