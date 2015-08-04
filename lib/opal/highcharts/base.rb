@@ -27,7 +27,7 @@ module Highcharts
 
   module Base
     include Native
-    extend MonkeyPatches
+    # extend MonkeyPatches
 
     def log(s)
       %x{ console.log( #{ s } ) }
