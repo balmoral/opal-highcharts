@@ -2,7 +2,7 @@ module Highcharts
   # Returned by Chart#options
   class Options
     include Base
-    # include Native
+    include Native
 
     alias_native :colors
     alias_native :symbols

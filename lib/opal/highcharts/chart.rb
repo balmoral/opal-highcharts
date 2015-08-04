@@ -2,7 +2,7 @@ module Highcharts
 
   class Chart
     include Base
-    # include Native
+    include Native
 
     def initialize(arg_options)
       log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{arg_options}"
@@ -25,10 +25,7 @@ module Highcharts
     alias_native :redraw
 
     # @!method set_title(title, subtitle)
-    # alias_native :set_title, :setTitle
-    def set_title(t)
-      `#{self.to_n}.setTitle(t)`
-    end
+    alias_native :set_title, :setTitle
 
     # @!method options
     # @return [Options]
