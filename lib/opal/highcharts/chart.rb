@@ -42,9 +42,9 @@ module Highcharts
     alias_native :renderer, :renderer, as: Renderer # see http://api.highcharts.com/highcharts#Renderer
     alias_native :series, :series, array: Series
 
-    def set_title(title, subtitle)
+    def set_title(title, subtitle, redraw = true)
       `console.log(#{"#{self.class.name}##{__method__}(#{title}, #{subtitle})"})`
-      `#{self.to_n}.setTitle(#{title}, #{subtitle})`
+      `#{self.to_n}.setTitle(#{title}, #{subtitle}, #{redraw})`
     end
   end
 end
