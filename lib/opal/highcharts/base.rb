@@ -20,7 +20,7 @@ module Highcharts
           end
         end
       else
-        Native.alias_native(new, old, options)
+        super
       end
     end
   end
