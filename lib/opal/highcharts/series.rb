@@ -6,7 +6,7 @@ module Highcharts
 
     alias_native :add_point, :addPoint
     alias_native :chart, :chart, as: Chart
-    alias_native :data, :data, as: Point
+    alias_native :data # , :data, as: Point
     alias_native :hide
     alias_native :name
     alias_native :options # TODO: determine class for series options
