@@ -44,7 +44,7 @@ module Highcharts
 
     def set_title(title, subtitle)
       `console.log(#{"set_title(#{title}, #{subtitle})"})`
-      self.setTitle(title, subTitle)
+      self.setTitle(title, subtitle)
     end
   end
 end
