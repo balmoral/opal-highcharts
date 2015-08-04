@@ -17,16 +17,29 @@ module Highcharts
     def alias_native(new, old = new, options = {})
       puts "#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"
       # `console.log(#{"#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"})`
-      if klass = options[:array]
-        puts "#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options}) => in NativePatches"
+      if old.end_with? ?=
+        define_method new do |value|
+          `#@native[#{old[0 .. -2]}] = #{Native.convert(value)}`
+          value
+        end
+      elsif klass = options[:array]
         define_method new do |*args, &block|
           if value = Native.call(@native, old, *args, &block)
             value.map{ |e| klass.new(e) }
           end
         end
       else
-        puts "#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options}) => calling super"
-        super
+        if as = options[:as]
+          define_method new do |*args, &block|
+            if value = Native.call(@native, old, *args, &block)
+              as.new(value.to_n)
+            end
+          end
+        else
+          define_method new do |*args, &block|
+            Native.call(@native, old, *args, &block)
+          end
+        end
       end
     end
   end
