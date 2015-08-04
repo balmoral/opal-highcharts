@@ -37,11 +37,14 @@ module Highcharts
     alias_native :get_svg, :getSVG
     alias_method :svg, :get_svg
     alias_native :redraw
-    alias_native :set_title, :setTitle
-    alias_method :title=, :set_title
+    # alias_native :set_title, :setTitle
     alias_native :options, :options, as: Options
     alias_native :renderer, :renderer, as: Renderer # see http://api.highcharts.com/highcharts#Renderer
     alias_native :series, :series, array: Series
 
+    def set_title(title, subtitle)
+      `console.log(#{"set_title(#{title}, #{subtitle})"})`
+      self.setTitle(title, subTitle)
+    end
   end
 end
