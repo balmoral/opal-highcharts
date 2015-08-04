@@ -42,7 +42,10 @@ module Highcharts
     alias_native :renderer, :renderer, as: Renderer # see http://api.highcharts.com/highcharts#Renderer
     alias_native :series, :series, array: Series
 
-    def set_title(title, subtitle, redraw = true)
+    # eg. title and subtitle should be either nil, string or { text: 'abc' } and any other title options
+    def set_title(title = nil, subtitle = nil, redraw = true)
+      title = { text: title } if subtitle.is_a?(String)
+      subtitle = { text: subtitle } if title.is_a?(String)
       `console.log(#{"#{self.class.name}##{__method__}(#{title}, #{subtitle}, #{redraw})"})`
       `#{self.to_n}.setTitle(#{title}, #{subtitle}, #{redraw})`
     end
