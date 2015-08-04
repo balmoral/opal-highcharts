@@ -38,6 +38,7 @@ module Highcharts
     alias_method :svg, :get_svg
     alias_native :redraw
     alias_native :set_title, :setTitle
+    alias_method :title=, :set_title
     alias_native :options, :options, as: Options
     alias_native :renderer, :renderer, as: Renderer # see http://api.highcharts.com/highcharts#Renderer
     alias_native :series, :series, array: Series
