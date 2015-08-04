@@ -43,7 +43,7 @@ module Highcharts
     alias_native :series, :series, array: Series
 
     def set_title(title, subtitle, redraw = true)
-      `console.log(#{"#{self.class.name}##{__method__}(#{title}, #{subtitle})"})`
+      `console.log(#{"#{self.class.name}##{__method__}(#{title}, #{subtitle}, #{redraw})"})`
       `#{self.to_n}.setTitle(#{title}, #{subtitle}, #{redraw})`
     end
   end
