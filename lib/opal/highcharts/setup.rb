@@ -4,5 +4,6 @@ require 'native'
 # These requires must be loaded in order of dependency:
 require 'opal/highcharts/base'
 require 'opal/highcharts/options'
+require 'opal/highcharts/point'
 require 'opal/highcharts/series'
 require 'opal/highcharts/chart'
