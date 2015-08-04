@@ -16,7 +16,7 @@ module Highcharts
 
     def alias_native(new, old = new, options = {})
       puts "#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"
-      `console.log(#{"#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"})`
+      # `console.log(#{"#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"})`
       if klass = options[:array]
         define_method new do |*args, &block|
           if value = Native.call(@native, old, *args, &block)
@@ -24,6 +24,7 @@ module Highcharts
           end
         end
       else
+        puts "#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options}) => calling super"
         super
       end
     end
