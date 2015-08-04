@@ -47,7 +47,7 @@ module Highcharts
       title = _title.is_a?(String) ? { text: _title } : _title
       subtitle = _subtitle.is_a?(String) ? { text: _subtitle } : _subtitle
       `console.log(#{"#{self.class.name}##{__method__}(#{title}, #{subtitle}, #{redraw})"})`
-      `#{self}.setTitle(#{title}, #{subtitle}, #{redraw})`
+      `#{self.to_n}.setTitle(#{title}, #{subtitle}, #{redraw})`
     end
   end
 end
