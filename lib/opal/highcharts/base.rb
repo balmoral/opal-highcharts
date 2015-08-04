@@ -12,6 +12,8 @@ module Highcharts
   class Series; end
 
   module NativePatches
+    extend Native::Helpers
+
     def alias_native(new, old = new, options = {})
       if klass = options[:array]
         define_method new do |*args, &block|
@@ -33,7 +35,7 @@ module Highcharts
     end
 
     def self.included(klass)
-      klass.extend Native::Helpers
+      #klass.extend Native::Helpers
       klass.extend NativePatches
     end
 
