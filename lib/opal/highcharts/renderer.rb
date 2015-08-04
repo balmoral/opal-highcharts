@@ -2,7 +2,7 @@ module Highcharts
 
   # http://api.highcharts.com/highcharts#Renderer
   class Renderer
-    include Native
+    include Base
     
     alias_native :arc
     alias_native :circle

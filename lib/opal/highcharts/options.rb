@@ -2,7 +2,7 @@ module Highcharts
 
   # http://api.highcharts.com/highcharts#Chart.options
   class Options
-    include Native
+    include Base
 
     alias_native :colors
     alias_native :symbols

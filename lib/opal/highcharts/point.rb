@@ -2,7 +2,7 @@ module Highcharts
 
   # http://api.highcharts.com/highcharts#Point
   class Point
-    include Native
+    include Base
     
     alias_native :category
     alias_native :percentage

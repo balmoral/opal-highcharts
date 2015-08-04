@@ -4,7 +4,6 @@ module Highcharts
 
   class Chart
     include Base
-    include Native
 
     def initialize(x_or_native)
       if native?(x_or_native)
@@ -40,7 +39,7 @@ module Highcharts
     alias_native :set_title, :setTitle
     alias_native :options, :options, as: Options
     alias_native :renderer, :renderer, as: Renderer # see http://api.highcharts.com/highcharts#Renderer
-    alias_native :series, :series, array: Series
+    alias_native :series, :series, array: Series # will only work with patch
 
     # eg. title and subtitle should be either nil, string or { text: 'abc' } and any other title options
     # def set_title(_title = nil, _subtitle = nil, redraw = true)

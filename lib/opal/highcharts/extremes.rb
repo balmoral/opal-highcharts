@@ -2,7 +2,7 @@ module Highcharts
 
   # http://api.highcharts.com/highcharts#Axis.getExtremes
   class Extremes
-    include Native
+    include Base
     
     alias_native :data_max, :dataMax
     alias_native :data_min, :dataMin

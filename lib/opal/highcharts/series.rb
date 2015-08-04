@@ -2,7 +2,7 @@ module Highcharts
 
   # http://api.highcharts.com/highcharts#Series
   class Series
-    include Native
+    include Base
 
     alias_native :add_point, :addPoint
     alias_native :chart, :chart, as: Chart

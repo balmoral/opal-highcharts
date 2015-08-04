@@ -2,7 +2,7 @@ module Highcharts
 
   # http://api.highcharts.com/highcharts#Axis
   class Axis
-    include Native
+    include Base
     
     alias_native :add_plot_band, :addPlotBand
     alias_native :add_plot_line, :addPlotLine

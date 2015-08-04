@@ -1,7 +1,7 @@
 # http://api.highcharts.com/highcharts#Highcharts
 
 module Highcharts
-  extend Base
+  include Base
 
   def self.chart(options)
     Chart.new(options)
