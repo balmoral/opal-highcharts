@@ -18,6 +18,7 @@ module Highcharts
       puts "#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"
       # `console.log(#{"#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"})`
       if klass = options[:array]
+        puts "#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options}) => in NativePatches"
         define_method new do |*args, &block|
           if value = Native.call(@native, old, *args, &block)
             value.map{ |e| klass.new(e) }
