@@ -1,7 +1,7 @@
 module Highcharts
 
+  # http://api.highcharts.com/highcharts#Point
   class Point
-    include Base
     include Native
     
     alias_native :category

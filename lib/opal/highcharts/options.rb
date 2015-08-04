@@ -1,7 +1,7 @@
 module Highcharts
-  # Returned by Chart#options
+
+  # http://api.highcharts.com/highcharts#Chart.options
   class Options
-    include Base
     include Native
 
     alias_native :colors

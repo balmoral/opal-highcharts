@@ -1,45 +1,46 @@
 module Highcharts
 
+  # http://api.highcharts.com/highcharts#Chart
+
   class Chart
     include Base
     include Native
 
-    def initialize(arg_options)
-      log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{arg_options}"
-      options = arg_options.to_h.dup
-      log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
-      case mode = options.delete(:mode)
-        when :chart
-          super(`new Highcharts.Chart( #{ options.to_n } )`)
-        when :stock
-          super(`new Highcharts.StockChart( #{ options.to_n } )`)
-        when :map
-          raise UnsupportedFeature, "chart mode : '#{mode}' (Highcharts.Map)"
-          # super(`new Highcharts.Map( #{ options.to_n } )`)
-        else
-          raise ArgumentError, "invalid chart mode '#{mode}'"
+    def initialize(x_or_native)
+      if native?(x_or_native)
+        super(x_or_native)
+      else
+        log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{x_or_native}"
+        options = x_or_native.to_h.dup
+        log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
+        case mode = options.delete(:mode)
+          when :chart
+            super(`new Highcharts.Chart( #{ options.to_n } )`)
+          when :stock
+            super(`new Highcharts.StockChart( #{ options.to_n } )`)
+          when :map
+            raise UnsupportedFeature, "chart mode : '#{mode}' (Highcharts.Map)"
+            # super(`new Highcharts.Map( #{ options.to_n } )`)
+          else
+            raise ArgumentError, "invalid chart mode '#{mode}'"
+        end
       end
     end
 
-    # @!method redraw(options)
+    alias_native :add_axis, :addAxis
+    alias_native :add_series, :addSeries
+    alias_native :add_series_as_drilldown, :addSeriesAsDrilldown
+    alias_native :container
+    alias_native :drill_up, :drillUp
+    alias_native :export_chart, :exportChart
+    alias_native :get
+    alias_native :get_svg, :getSVG
+    alias_method :svg, :get_svg
     alias_native :redraw
-
-    # @!method set_title(title, subtitle)
     alias_native :set_title, :setTitle
-
-    # @!method options
-    # @return [Options]
     alias_native :options, :options, as: Options
-
-    # @!method series
-    # @return [array of Series]
+    alias_native :renderer, :renderer, as: Renderer # see http://api.highcharts.com/highcharts#Renderer
     alias_native :series, :series, array: Series
-    # def series
-    #   Native(`#{self.to_n}.series`).map {|e|
-    #     log "#{self.class.name}##{__method__}:#{__LINE__} : calling Series.new(#{e})"
-    #    Series.new(e)
-    #  }
-    #end
 
   end
 end
