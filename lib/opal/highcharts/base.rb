@@ -15,6 +15,8 @@ module Highcharts
     extend Native::Helpers
 
     def alias_native(new, old = new, options = {})
+      puts "#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"
+      `console.log(#{"#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"})`
       if klass = options[:array]
         define_method new do |*args, &block|
           if value = Native.call(@native, old, *args, &block)
@@ -31,7 +33,7 @@ module Highcharts
     include Native
 
     def log(s)
-      %x{ console.log( #{ s } ) }
+      `console.log(#{s})`
     end
 
     def self.included(klass)
