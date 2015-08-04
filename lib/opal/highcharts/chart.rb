@@ -45,7 +45,7 @@ module Highcharts
     # @return [array of Series]
     def series
       Native(`#{self.to_n}.series`).map {|e|
-        log "#{self.class.name}##{__method__}:#{__LINE__} : calling Series.new(#{e}) e.native?=#{e.native?}"
+        log "#{self.class.name}##{__method__}:#{__LINE__} : calling Series.new(#{e})"
         Series.new(e)
       }
     end
