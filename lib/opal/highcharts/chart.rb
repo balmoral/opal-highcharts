@@ -29,7 +29,7 @@ module Highcharts
 
     # @!method options
     # @return [Options]
-    alias_native :options, as: Options
+    alias_native :options, :options, as: Options
     #def options
     #  o = `#{self.to_n}.options`
     #  o_n = Native(o)
