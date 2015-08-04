@@ -30,7 +30,7 @@ module Highcharts
     # Returns array containing the series' data point objects.
     # @return [Array]
     def data
-      Native(`#{self.to_n}.data`)
+      Native(`#{self.to_n}.data`).map{|e| Point.new(e)}
     end
 
     # @!method hide
