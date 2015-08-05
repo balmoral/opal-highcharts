@@ -50,7 +50,7 @@ require 'opal-highcharts'
 > http://code.highcharts.com/stock/highstock.js
 > and put the file in `app/` or whichever directory you are compiling assets from.
 
-## TODO
+## ToDo
 
 * Implement Highstock features
 * Documentation
@@ -65,6 +65,8 @@ To contribute to this project, follow the steps below.
 3. Commit your changes (`git commit -am 'description of commit'`)
 4. Push to the branch (`git push origin new-branch`)
 5. Create a Pull Request
+
+Contributions welcome.
 
 ## Licenses
 
