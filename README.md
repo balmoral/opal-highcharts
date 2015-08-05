@@ -59,9 +59,11 @@ To contribute to this project, follow the steps below.
 ## Licenses
 
 ### Highcharts
-Free for non-commercial use. See http://www.highcharts.com/ for details.
+Free for non-commercial use. 
+See http://www.highcharts.com/ for details.
 
 ###opal-highcharts 
-MIT Licence (see LICENSE.txt)
+MIT Licence.
+See LICENSE.txt
 
 
