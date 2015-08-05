@@ -45,10 +45,10 @@ require 'opal-highcharts'
 > You need to bring your own `highcharts.js` or `highstock.js` file.
 > If you require Highstock functionality use `highstock.js`, which includes Highcharts. 
 > If you only require Highcharts functionality use `highcharts.js`. 
-> The files can be downloaded from
-> http://code.highcharts.com/highcharts.js and
-> http://code.highcharts.com/stock/highstock.js.
-> Put the file in `app/` or whichever directory you are compiling assets from.
+> Download from
+> http://code.highcharts.com/highcharts.js or
+> http://code.highcharts.com/stock/highstock.js
+> and put the file in `app/` or whichever directory you are compiling assets from.
 
 ## Getting involved
 
