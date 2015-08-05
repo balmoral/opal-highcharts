@@ -15,5 +15,6 @@ module Highcharts
     alias_native :x
     alias_native :y
     
-  end  
+  end
+
 end  

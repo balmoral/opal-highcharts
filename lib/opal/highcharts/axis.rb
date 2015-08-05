@@ -3,7 +3,7 @@ module Highcharts
   # http://api.highcharts.com/highcharts#Axis
   class Axis
     include Base
-    
+
     alias_native :add_plot_band, :addPlotBand
     alias_native :add_plot_line, :addPlotLine
     alias_native :extremes, :getExtremes, as: Extremes
@@ -20,5 +20,6 @@ module Highcharts
     alias_native :to_value, :toValue
     alias_native :update
 
-  end  
-end  
+  end
+
+end

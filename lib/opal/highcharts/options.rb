@@ -9,6 +9,7 @@ module Highcharts
     alias_native :lang
     alias_native :global
     alias_native :chart
+
   end
 
 end

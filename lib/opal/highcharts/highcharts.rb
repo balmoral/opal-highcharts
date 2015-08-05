@@ -32,4 +32,5 @@ module Highcharts
   def self.options=(options)
     set_options(options)
   end
+
 end

@@ -1,16 +1,29 @@
 module Highcharts
 
-  # http://api.highcharts.com/highcharts#Chart
+  # Ruby wrapper for Highcharts.Chart.js
+  #
+  # @author Colin Gunn
+  # @see http://api.highcharts.com/highcharts#Chart
 
   class Chart
     include Base
 
-    def initialize(x_or_native)
-      if native?(x_or_native)
-        super(x_or_native)
+    # Creates a chart.
+    #
+    # @param [Hash,Native] options_or_native
+    # If the argument is a native object it is wrapped
+    # otherwise a new native chart is created and wrapped.
+    # @option options [Symbol] :mode Either :chart, :stock, :map
+    # @option options [Hash] :chart and others per Highcharts docs
+    #
+    # @see http://api.highcharts.com/highcharts#chart
+    # @see http://api.highcharts.com/highstock#chart
+    def initialize(options_or_native)
+      if native?(options_or_native)
+        super(options_or_native)
       else
         log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{x_or_native}"
-        options = x_or_native.to_h.dup
+        options = options_or_native.to_h.dup
         log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
         case mode = options.delete(:mode)
           when :chart
@@ -26,27 +39,109 @@ module Highcharts
       end
     end
 
+    # Adds an axis to the chart after render time.
+    # @param options [Hash] axis configuration options
+    # @param is_x [Boolean] optional, whether axis is X or Y axis, defaults to true
+    # @param redraw [Boolean] optional, whether to redraw after adding axis, defaults to true
+    # @param animation [Boolean,Hash] optional, whether to animate redraw, defaults to true
+    # @see http://api.highcharts.com/highcharts#Chart.addAxis
     alias_native :add_axis, :addAxis
+
+    # Adds a series to the chart after render time.
+    # @param options [Hash] series configuration options
+    # @param is_x [Boolean] optional, whether axis is X or Y axis, defaults to true
+    # @param redraw [Boolean] optional, whether to redraw after adding axis, defaults to true
+    # @param animation [Boolean,Hash] optional, whether to animate redraw, defaults to true
+    # @see http://api.highcharts.com/highcharts#Chart.addSeries
     alias_native :add_series, :addSeries
+
+    # Add a series to the chart as drilldown from a specific point in the parent series.
+    # @see http://api.highcharts.com/highcharts#Chart.addSeriesAsDrilldown
     alias_native :add_series_as_drilldown, :addSeriesAsDrilldown
+
+    # Returns a (native) reference to the containing HTML element.
+    # @see http://api.highcharts.com/highcharts#Chart.container
     alias_native :container
+
+    # Removes the chart and purges memory.
+    # @see http://api.highcharts.com/highcharts#Chart.destroy
+    alias_native :destroy
+
+    # When the chart is drilled down to a child series,
+    # chart.drill_up will drill up to the parent series.
+    # @see http://api.highcharts.com/highcharts#Chart.drillUp
     alias_native :drill_up, :drillUp
+
+    # Exporting module required.
+    # Submit an SVG version of the chart to a server
+    # along with some parameters for conversion.
+    # @see http://api.highcharts.com/highcharts#Chart.exportChart
     alias_native :export_chart, :exportChart
+
+    # Returns a chart element for a given a id.
+    # @see http://api.highcharts.com/highcharts#Chart.get
+    # @param [String] the id of the chart element as set in configuration options
+    # @return [Axis,Series,Point,nil] the axis, series or point
     alias_native :get
+
+    # Returns an SVG string representing the chart.
+    # Highcharts exporting module required.
+    # @see http://api.highcharts.com/highcharts#Chart.getSVG
+    # @param [Hash] additional options
+    # @return [String]
     alias_native :get_svg, :getSVG
     alias_method :svg, :get_svg
-    alias_native :redraw
-    alias_native :set_title, :setTitle
-    alias_native :options, :options, as: Options
-    alias_native :renderer, :renderer, as: Renderer # see http://api.highcharts.com/highcharts#Renderer
-    alias_native :series, :series, array: Series # will only work with patch
 
-    # eg. title and subtitle should be either nil, string or { text: 'abc' } and any other title options
-    # def set_title(_title = nil, _subtitle = nil, redraw = true)
-    #   title = _title.is_a?(String) ? { text: _title } : _title
-    #   subtitle = _subtitle.is_a?(String) ? { text: _subtitle } : _subtitle
-    #   `console.log(#{"#{self.class.name}##{__method__}(#{title}, #{subtitle}, #{redraw})"})`
-    #   `#{self.to_n}.setTitle(#{title.to_n}, #{subtitle.to_n}, #{redraw})`
-    # end
+    # Returns the current configuration options of the chart.
+    # @see http://api.highcharts.com/highstock#Chart.options
+    # @return [Highcharts::Options]
+    alias_native :options, :options, as: Options
+
+    # Redraw the chart after any changes have been made.
+    # @param animation [Boolean,Hash] optional, whether to animate redraw, defaults to true
+    # @see http://api.highcharts.com/highstock#Chart.redraw
+    alias_native :redraw
+
+    # Returns the renderer for the chart.
+    # @see http://api.highcharts.com/highcharts#Renderer
+    # @return [Highcharts::Renderer]
+    alias_native :renderer, :renderer, as: Renderer
+
+    # Set a new title or subtitle for the chart.
+    # @param [Hash] title optional, configuration options for the title, default is nil
+    # @param [Hash] subtitle optional, configuration options for the subtitle. default is nil
+    # @param redraw [Boolean] optional, whether to redraw immediately, defaults to true
+    # @see http://api.highcharts.com/highstock#Chart.setTitle
+    alias_native :set_title, :setTitle
+
+    # Returns an array of the series in the chart.
+    # @see http://api.highcharts.com/highstock#Chart.series
+    # @return [Array<Series>]
+    alias_native :series, :series, array: Series # requires ##alias_native patch
+
+
+    # Change the title (but not subtitle) of the chart.
+    # @param [String,Hash] string_or_hash
+    #   If a string, then only the title text will be changed.
+    #   If a hash it should contain title options.
+    # @param redraw [Boolean] optional, whether to redraw immediately, defaults to true
+    # @see http://api.highcharts.com/highstock#Chart.setTitle
+    def title=(string_or_hash, redraw = true)
+      t = string_or_hash.is_a?(String) ? {text: string_or_hash} : string_or_hash.to_h
+      set_title(t, nil, redraw)
+    end
+
+    # Change the subtitle (but not title) of the chart.
+    # @param [String,Hash] string_or_hash
+    #   If a string, then only the subtitle text will be changed.
+    #   If a hash it should contain title options.
+    # @param redraw [Boolean] optional, whether to redraw immediately, defaults to true
+    # @see http://api.highcharts.com/highstock#Chart.setTitle
+    def subtitle=(string_or_hash, redraw = true)
+      t = string_or_hash.is_a?(String) ? {text: string_or_hash} : string_or_hash.to_h
+      set_title(nil, t, redraw)
+    end
+
   end
+
 end

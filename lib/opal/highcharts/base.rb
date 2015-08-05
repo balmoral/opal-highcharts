@@ -2,21 +2,24 @@ module Highcharts
 
   class UnsupportedFeature < RuntimeError; end
 
-  class Axis; end
-  class Chart; end
-  class Extremes; end
+  class Axis;       end
+  class Chart;      end
+  class Extremes;   end
   class Highcharts; end
-  class Options; end
-  class Point; end
-  class Renderer; end
-  class Series; end
+  class Options;    end
+  class Point;      end
+  class Renderer;   end
+  class Series;     end
 
   module NativePatches
     extend Native::Helpers
 
+    # Patch of Native.alias_native to provide us
+    # with ability to specify:
+    #    alias_native :ruby_name, :js_name, array: Class
+    # which will map the elements of the native array
+    # to elements type Class.
     def alias_native(new, old = new, options = {})
-      puts "#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"
-      # `console.log(#{"#{name}###{__method__}:#{__LINE__}(#{new}, #{old}, #{options})"})`
       if old.end_with? ?=
         define_method new do |value|
           `#@native[#{old[0 .. -2]}] = #{Native.convert(value)}`

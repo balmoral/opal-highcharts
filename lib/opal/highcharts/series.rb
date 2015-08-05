@@ -26,4 +26,5 @@ module Highcharts
     alias_native :y_axis, :yAxis, as: Axis
 
   end
+
 end

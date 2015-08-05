@@ -13,5 +13,6 @@ module Highcharts
     alias_native :rect
     alias_native :text
 
-  end  
+  end
+
 end  
