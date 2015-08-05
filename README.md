@@ -50,6 +50,12 @@ require 'opal-highcharts'
 > http://code.highcharts.com/stock/highstock.js
 > and put the file in `app/` or whichever directory you are compiling assets from.
 
+## TODO
+
+* Implement Highstock features
+* Documentation
+* Testing
+
 ## Getting involved
 
 To contribute to this project, follow the steps below.
