@@ -50,10 +50,6 @@ module Highcharts
   module Base
     include Native
 
-    def log(s)
-      `console.log(#{s})`
-    end
-
     def self.included(klass)
       #klass.extend Native::Helpers
       klass.extend NativePatches

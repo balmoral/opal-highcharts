@@ -8,7 +8,7 @@ module Highcharts
   class Chart
     include Base
 
-    # Creates a chart.
+    # Creates a Highcharts or Highstock chart.
     #
     # @param [Hash,Native] options_or_native
     # If the argument is a native object it is wrapped
@@ -16,15 +16,15 @@ module Highcharts
     # @option options [Symbol] :mode Either :chart, :stock, :map
     # @option options [Hash] :chart and others per Highcharts docs
     #
+    # Highcharts.Map is not currently supported.
+    #
     # @see http://api.highcharts.com/highcharts#chart
     # @see http://api.highcharts.com/highstock#chart
     def initialize(options_or_native)
       if native?(options_or_native)
         super(options_or_native)
       else
-        log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{options_or_native}"
         options = options_or_native.to_h.dup
-        log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
         case mode = options.delete(:mode)
           when :chart
             super(`new Highcharts.Chart( #{ options.to_n } )`)
