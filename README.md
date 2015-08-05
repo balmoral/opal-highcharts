@@ -1,6 +1,6 @@
 ## Ruby wrapper for the Highcharts.js and Highstock.js charting libraries
 
-The goal of this project is to wrap the Highcharts and Highstock APIs in Opal, providing a nice Ruby interface to Highcharts' functionality.
+The goal of this project is to wrap the Highcharts and Highstock APIs in Opal, providing a simple Ruby interface to Highcharts' functionality.
 
 To find out more about Highcharts, check out these links:
 
