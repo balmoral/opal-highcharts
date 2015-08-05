@@ -39,14 +39,12 @@ $ git clone https://github.com/balmoral/opal-highcharts
 ```ruby
 # app/application.rb
 require 'opal'
-require 'highcharts'
 require 'opal-highcharts'
 ```
 
-> **Note**: this file requires two important dependencies, `highcharts` and `opal-highcharts`.
-> You need to bring your own `highcharts.js` file as the gem does not include one. If
-> Download a copy from http://www.highcharts.com/download and place
-> it into `app/` or whichever directory you are compiling assets from. 
+> You need to bring your own `highcharts.js` file as the gem does not include one. 
+> You can download a copy from http://www.highcharts.com/download and put
+> it in `app/` or whichever directory you are compiling assets from. 
 
 ## Getting involved
 
@@ -61,9 +59,9 @@ To contribute to this project, follow the steps below.
 ## Licenses
 
 ### Highcharts
-is free for non-commercial use. See http://www.highcharts.com/ for details.
+Free for non-commercial use. See http://www.highcharts.com/ for details.
 
 ###opal-highcharts 
-  see LICENSE.txt
+MIT Licence (see LICENSE.txt)
 
 
