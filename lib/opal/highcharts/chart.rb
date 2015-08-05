@@ -22,7 +22,7 @@ module Highcharts
       if native?(options_or_native)
         super(options_or_native)
       else
-        log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{x_or_native}"
+        log "#{self.class.name}##{__method__}:#{__LINE__} : arg_options=#{options_or_native}"
         options = options_or_native.to_h.dup
         log "#{self.class.name}##{__method__}:#{__LINE__} : options=#{options}"
         case mode = options.delete(:mode)
