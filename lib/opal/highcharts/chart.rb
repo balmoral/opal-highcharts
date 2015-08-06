@@ -13,8 +13,8 @@ module Highcharts
     # @param [Hash,Native] options_or_native
     # If the argument is a native object it is wrapped
     # otherwise a new native chart is created and wrapped.
-    # @option options [Symbol] :mode Either :chart, :stock, :map
-    # @option options [Hash] :chart and others per Highcharts docs
+    # @option options_or_native [Symbol] :mode Either :chart, :stock, :map
+    # @option options_or_native [Hash] :chart and others per Highcharts docs
     #
     # Highcharts.Map is not currently supported.
     #
@@ -80,14 +80,14 @@ module Highcharts
 
     # Returns a chart element for a given a id.
     # @see http://api.highcharts.com/highcharts#Chart.get
-    # @param [String] the id of the chart element as set in configuration options
+    # @param id [String] the id of the chart element as set in configuration options
     # @return [Axis,Series,Point,nil] the axis, series or point
     alias_native :get
 
     # Returns an SVG string representing the chart.
     # Highcharts exporting module required.
     # @see http://api.highcharts.com/highcharts#Chart.getSVG
-    # @param [Hash] additional options
+    # @param options [Hash] additional options
     # @return [String]
     alias_native :get_svg, :getSVG
     alias_method :svg, :get_svg
@@ -108,8 +108,8 @@ module Highcharts
     alias_native :renderer, :renderer, as: Renderer
 
     # Set a new title or subtitle for the chart.
-    # @param [Hash] title optional, configuration options for the title, default is nil
-    # @param [Hash] subtitle optional, configuration options for the subtitle. default is nil
+    # @param title [Hash] optional, configuration options for the title, default is nil
+    # @param subtitle [Hash] subtitle optional, configuration options for the subtitle. default is nil
     # @param redraw [Boolean] optional, whether to redraw immediately, defaults to true
     # @see http://api.highcharts.com/highstock#Chart.setTitle
     alias_native :set_title, :setTitle
@@ -121,7 +121,7 @@ module Highcharts
 
 
     # Change the title (but not subtitle) of the chart.
-    # @param [String,Hash] string_or_hash
+    # @param text_or_options [String,Hash]
     #   If a string, then only the title text will be changed.
     #   If a hash it should contain title options.
     # @param redraw [Boolean] optional, whether to redraw immediately, defaults to true
@@ -132,7 +132,7 @@ module Highcharts
     end
 
     # Change the subtitle (but not title) of the chart.
-    # @param [String,Hash] string_or_hash
+    # @param text_or_options [String,Hash] string_or_hash
     #   If a string, then only the subtitle text will be changed.
     #   If a hash it should contain title options.
     # @param redraw [Boolean] optional, whether to redraw immediately, defaults to true
