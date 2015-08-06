@@ -117,7 +117,7 @@ module Highcharts
     # Returns an array of the series in the chart.
     # @see http://api.highcharts.com/highstock#Chart.series
     # @return [Array<Series>]
-    alias_native :series, :series, array: Series # requires ##alias_native patch
+    alias_native :series, :series, as_array_of: Series # requires ##alias_native patch
 
 
     # Change the title (but not subtitle) of the chart.

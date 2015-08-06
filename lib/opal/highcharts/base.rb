@@ -16,7 +16,7 @@ module Highcharts
 
     # Patch of Native.alias_native to provide us
     # with ability to specify:
-    #    alias_native :ruby_name, :js_name, array: Class
+    #    alias_native :ruby_name, :js_name, as_array_of: Class
     # which will map the elements of the native array
     # to elements type Class.
     def alias_native(new, old = new, options = {})
@@ -25,7 +25,7 @@ module Highcharts
           `#@native[#{old[0 .. -2]}] = #{Native.convert(value)}`
           value
         end
-      elsif klass = options[:array]
+      elsif klass = options[:as_array_of]
         define_method new do |*args, &block|
           if value = Native.call(@native, old, *args, &block)
             value.map{ |e| klass.new(e) }
