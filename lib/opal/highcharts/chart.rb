@@ -65,7 +65,10 @@ module Highcharts
 
     # Removes the chart and purges memory.
     # @see http://api.highcharts.com/highcharts#Chart.destroy
-    alias_native :destroy
+    # alias_native :destroy
+    def destroy
+      `$('#container').highcharts().destroy()`
+    end
 
     # When the chart is drilled down to a child series,
     # chart.drill_up will drill up to the parent series.
