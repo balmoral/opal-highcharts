@@ -25,16 +25,16 @@ module Highcharts
         super(options_or_native)
       else
         options = options_or_native.to_h.dup
-        case mode = options.delete(:mode)
+        case mode = options.delete(:mode) || :chart
           when :chart
             super(`new Highcharts.Chart( #{ options.to_n } )`)
           when :stock
             super(`new Highcharts.StockChart( #{ options.to_n } )`)
           when :map
-            raise UnsupportedFeature, "chart mode : '#{mode}' (Highcharts.Map)"
+            raise UnsupportedFeature, "#{__FILE__}[#{__LINE__}] #{self.class.name}##{__method__} : chart mode : '#{mode}' (Highcharts.Map)"
             # super(`new Highcharts.Map( #{ options.to_n } )`)
           else
-            raise ArgumentError, "invalid chart mode '#{mode}'"
+            raise ArgumentError, "#{__FILE__}[#{__LINE__}] #{self.class.name}##{__method__} : invalid chart mode '#{mode}'"
         end
       end
     end
@@ -121,7 +121,7 @@ module Highcharts
 
 
     # Change the title (but not subtitle) of the chart.
-    # @param text_or_options [String,Hash]
+    # @param string_or_hash [String,Hash]
     #   If a string, then only the title text will be changed.
     #   If a hash it should contain title options.
     # @param redraw [Boolean] optional, whether to redraw immediately, defaults to true
@@ -132,7 +132,7 @@ module Highcharts
     end
 
     # Change the subtitle (but not title) of the chart.
-    # @param text_or_options [String,Hash] string_or_hash
+    # @param string_or_hash [String,Hash] string_or_hash
     #   If a string, then only the subtitle text will be changed.
     #   If a hash it should contain title options.
     # @param redraw [Boolean] optional, whether to redraw immediately, defaults to true
