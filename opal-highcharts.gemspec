@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 1.9.3'
+  # spec.required_ruby_version = '>= 1.9.3'
   # spec.add_runtime_dependency 'opal', '>= 0.8.0', '< 0.9.0'
   # spec.add_development_dependency 'opal-rspec', '~> 0.4.0'
   # spec.add_development_dependency 'yard'

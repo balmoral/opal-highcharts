@@ -29,7 +29,7 @@ module Highcharts
           when :chart
             super(`new Highcharts.Chart( #{ options.to_n } )`)
           when :stock
-            super(`new Highcharts.StockChart( #{ options.to_n } )`)
+            super(`new Highcharts.stockChart( #{ options.to_n } )`)
           when :map
             raise UnsupportedFeature, "#{__FILE__}[#{__LINE__}] #{self.class.name}##{__method__} : chart mode : '#{mode}' (Highcharts.Map)"
             # super(`new Highcharts.Map( #{ options.to_n } )`)
