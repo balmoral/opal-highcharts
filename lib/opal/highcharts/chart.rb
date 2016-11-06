@@ -102,6 +102,16 @@ module Highcharts
     # @see http://api.highcharts.com/highstock#Chart.redraw
     alias_native :redraw
 
+    # Reflows the chart to its container.
+    # By default, the chart reflows automatically to its
+    # container following a window.resize event, as per
+    # the chart.reflow option. However, there are no
+    # reliable events for div resize, so if the container
+    # is resized without a window resize event, this must
+    # be called explicitly.
+    # @see http://api.highcharts.com/highstock#Chart.reflow
+    alias_native :reflow
+
     # Returns the renderer for the chart.
     # @see http://api.highcharts.com/highcharts#Renderer
     # @return [Highcharts::Renderer]
@@ -119,6 +129,8 @@ module Highcharts
     # @return [Array<Series>]
     alias_native :series, :series, as_array_of: Series # requires ##alias_native patch
 
+    # @see http://api.highcharts.com/highstock#Chart.update
+    alias_native :update, :update
 
     # Change the title (but not subtitle) of the chart.
     # @param string_or_hash [String,Hash]

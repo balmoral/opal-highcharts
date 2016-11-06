@@ -17,11 +17,11 @@ module Highcharts
     alias_native :set_data, :setData
     alias_method :data=, :set_data
     alias_native :set_visible, :setVisible
+    alias_method :visible=, :set_visible
     alias_native :show
     alias_native :type
     alias_native :update
     alias_native :visible
-    alias_method :visible=, :set_visible
     alias_native :x_axis, :xAxis, as: Axis
     alias_native :y_axis, :yAxis, as: Axis
 
