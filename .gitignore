@@ -1,6 +1,4 @@
-build
-commit
-push
+Rakefile
 .idea
 .gitignore
 *.gem

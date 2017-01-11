@@ -39,7 +39,7 @@ $ git clone https://github.com/balmoral/opal-highcharts
 ```ruby
 # app/application.rb
 require 'opal'
-require 'opal-highcharts'
+require 'opal/highcharts'
 ```
 
 > You need to bring your own `highcharts.js` or `highstock.js` file.
